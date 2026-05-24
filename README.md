@@ -1,16 +1,45 @@
-# React + Vite
+# pearl's Weather
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+실시간 날씨와 주간 예보를 제공하는 감성형 Weather Dashboard입니다.  
+현재 위치 기반 날씨 조회와 도시 검색 기능을 지원합니다.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Preview
 
-## React Compiler
+🔗 Deploy  
+https://pearltpolio-git-main-pearl-kim-s-projects.vercel.app/
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## Features
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- 현재 위치 기반 날씨 조회
+- 도시 검색 기능
+- 실시간 온도 및 날씨 상태 표시
+- 주간 예보 그래프
+- 즐겨찾기 기능
+- 반응형 UI
+- 날씨 상태별 배경 변화
+- Glassmorphism UI 디자인
+
+---
+
+## Tech Stack
+
+- React
+- Vite
+- Zustand
+- Tailwind CSS
+- Framer Motion
+- Recharts
+- OpenWeather API
+- Vercel
+
+---
+
+## Installation
+
+```bash
+npm install
+npm run dev
