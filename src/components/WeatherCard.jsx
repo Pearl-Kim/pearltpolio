@@ -32,8 +32,10 @@ export default function WeatherCard() {
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
-      className="relative bg-gradient-to-br from-white to-blue-50 rounded-3xl shadow-lg p-8 text-center w-80 border border-blue-100"
+      whileHover={{ y: -6, scale: 1.02 }}
+      className="board-card relative w-full max-w-sm rounded-[2rem] border border-white/60 bg-white/70 p-8 text-center shadow-2xl shadow-blue-200/60 backdrop-blur-xl"
     >
+      <div className="absolute inset-0 rounded-[2rem] bg-gradient-to-br from-white/60 via-white/10 to-transparent pointer-events-none" />
       {/* 즐겨찾기 버튼 */}
       <button
         type="button"
@@ -42,7 +44,7 @@ export default function WeatherCard() {
             ? removeFavorite(weatherData.name)
             : addFavorite(weatherData.name);
         }}
-        className="absolute top-4 right-4"
+        className="favorite-btn"
         title={isFavorite ? "즐겨찾기 삭제" : "즐겨찾기 추가"}
       >
         {isFavorite ? (
@@ -52,24 +54,43 @@ export default function WeatherCard() {
         )}
       </button>
 
-      <div className="flex justify-center mb-3">{getIcon()}</div>
+      <motion.div
+        animate={{
+          y: [0, -8, 0],
+          rotate: main.includes("cloud") ? [0, 2, -2, 0] : [0, 8, -8, 0],
+        }}
+        transition={{
+          duration: main.includes("rain") ? 1.2 : 2.5,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+        className="mb-4 flex justify-center"
+      >
+        {getIcon()}
+      </motion.div>
 
-      <h2 className="text-3xl font-bold text-primary">
-        도시명 : {weatherData.name}
+      <h2 className="text-2xl font-black text-slate-800">
+        {weatherData.name}
       </h2>
 
-      <p className="text-5xl font-extrabold text-gray-800 mt-2">
-        섭씨 : {Math.round(weatherData.main.temp)}°C
+      <p className="mt-4 text-6xl font-black tracking-tight text-slate-800">
+        {Math.round(weatherData.main.temp)}°
       </p>
 
-      <p className="capitalize text-gray-600">
+      <p className="mt-2 capitalize text-sm font-semibold text-blue-500">
         {weatherData.weather[0].description}
       </p>
 
-      <p className="text-gray-500 text-sm mt-3">
-        💧 Humidity: {weatherData.main.humidity}% | 🌬️ Wind:{" "}
-        {weatherData.wind.speed} m/s
-      </p>
+      <div className="mt-6 grid grid-cols-2 gap-3 text-sm">
+        <div className="rounded-2xl bg-blue-50 p-4">
+          <p className="text-slate-400">Humidity</p>
+          <p className="font-bold text-slate-700">{weatherData.main.humidity}%</p>
+        </div>
+        <div className="rounded-2xl bg-indigo-50 p-4">
+          <p className="text-slate-400">Wind</p>
+          <p className="font-bold text-slate-700">{weatherData.wind.speed} m/s</p>
+        </div>
+      </div>
     </motion.div>
   );
 }
