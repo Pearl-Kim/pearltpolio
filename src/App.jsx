@@ -1,9 +1,9 @@
 import { useEffect } from "react";
 import "./App.css";
 
-import SearchBar from "./components/searchBar";
-import WeatherCard from "./components/weatherCard";
-import ForecastChart from "./components/forecastChart";
+import SearchBar from "./components/SearchBar";
+import WeatherCard from "./components/WeatherCard";
+import ForecastChart from "./components/ForecastChart";
 
 import { getWeatherByCoords } from "./api/getWeather";
 import useWeatherStore from "./store/weatherSore";
